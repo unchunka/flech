@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+    <head>      
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="flech, rando" />
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript" src="js/analytics.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="banner">
+
+                <table>
+                    <tr>
+                        <td id="banner-1"></td>
+                        <td id="banner-2"><a href="https://twitter.com/flech_fr"><img src="img/twitter.png" /></a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="title">
+                <h1>FLECH</h1>
+                <span id="autor">Par thierry sambussy</span>
+            </div>
+        </header>
+        <nav>
+            <table>
+                <tr>
+                    <td class="home"><a href="{{ url('home') }}">HOME</a></td>
+                    <td class="news"><a href="{{ url('news') }}">NEWS</a></td>
+                    <td class="randos"><a href="{{ url('randos') }}">RANDOS</a></td>
+                    <td class="citations"><a href="{{ url('citations') }}">CITATIONS</a></td>
+                    <td class="links"><a href="{{ url('links') }}">LIENS</a></td>
+                    <td class="contact"><a href="{{ url('contact') }}">CONTACT</a></td>
+                </tr>
+            </table>
+        </nav>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        <footer>
+            <div id="line"></div>
+            <img src="img/moi.jpg" />
+            <p>---> 2016</p>
+        </footer>
+    </body>
+
+</html>

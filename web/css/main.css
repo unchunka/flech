@@ -1,0 +1,235 @@
+@font-face {
+    font-family: JosefinSansStdLight;
+    src: url("bb.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: aaa;
+    src: url("4.ttf") format("opentype");
+}
+
+body {
+    font-family: Monaco,"Courier New","courier";
+    margin:0px;
+    font-size:13px;
+}
+
+h1,h2 {font-weight:normal}
+
+ul {
+    margin:0px;
+    padding:0px;
+}
+
+header {
+    font-size:22px;
+    color:white;
+    font-family: 'JosefinSansStdLight',Arial;
+    margin-bottom:20px;
+    position:relative;
+}
+
+header .title {
+    padding:5px;
+    background: #4892F5 url('../img/logo-white.jpg') no-repeat left;
+    background-size: 70px;
+    padding-left:70px;
+}
+
+header h1 {
+    margin-bottom: 0px;
+}
+
+header #autor {
+    font-size:medium;
+    padding:3px;
+    padding-top:5px;
+    padding-bottom:1px;
+    background:#63AFFD;
+}
+
+header #citation {
+    font-size:medium;
+    color:#E7F0F8;
+    text-align: center;
+}
+
+header .banner {
+    font-size:16px;
+    height:60px;
+}
+
+header .banner table {
+    width:100%;
+    border-collapse: collapse;
+}
+
+header .banner table tr {
+
+}
+
+header #banner-1 {
+}
+
+header #banner-2 {
+    width:10%;
+    text-align:right;
+}
+
+header #banner-2 img {
+    height:50px;
+
+}
+
+footer {
+    background: #4892F5;
+    padding:5px;
+}
+
+#content {
+    padding:0px;
+    padding-top:20px;
+    margin:0px;
+    min-height: 600px;
+    margin:20px;
+}
+
+#content h1,h2 {
+    margin:20px;
+}
+
+nav {
+    background-color: red;
+    color: #444;
+    margin:auto;
+}
+
+nav table {
+    background-color: green;
+    width:100%;
+    border-collapse: collapse;
+}
+
+nav td {
+    padding:5px;
+    width:16.666%;
+    text-align:center;
+}
+
+nav td a {
+    text-decoration: none;
+    color:white;
+}
+
+nav td.home {
+    background-color: #FF6961;
+}
+
+nav td.news {
+    background-color: #007BA7;
+}
+
+nav td.randos {
+    background-color: #77DD77;
+}
+
+nav td.citations {
+    background-color: #FFB347;
+}
+
+nav td.links {
+    background-color: #966FD6;
+}
+
+nav td.contact {
+    background-color: #188754;
+}
+
+footer img {
+    width:100%;
+}
+
+#content blockquote {
+  text-align: center;
+  padding:10px;
+}
+
+#content .right {
+    width:50%;
+    float:right;
+}
+
+#content .left {
+    width:50%;
+}
+
+#content table {
+    border-collapse: collapse;
+    width:100%;
+    margin-bottom:20px;
+}
+
+#content table th {
+}
+
+#content table td {
+    border: 2px solid white;
+    padding:5px;
+    width:25%;
+}
+
+#content table .easy {
+    background:#FDFD96;
+}
+
+#content table .medium {
+    background:#FFB347;
+}
+
+#content table .sport {
+    background:#FF6961;
+}
+
+#content .center {
+    text-align:center;
+}
+
+#line {
+    height:5px;
+    background: linear-gradient(to bottom, white, #3480E4);
+}
+
+footer {
+    position:relative;
+    padding:0px;
+}
+
+footer p {
+    font-family: 'JosefinSansStdLight',Arial;
+    position:absolute;
+    left: 50%;
+    top: 10%;
+    color:white;
+    font-size:large;
+    text-align:center;
+}
+
+footer .banner {
+    background:red;
+    height:100px;
+}
+
+@media only screen and (max-width: 768px) {
+    nav td {
+        width: 100%;
+        display:block;
+    }
+    #content .section {
+        float: none;
+        width:100%;
+    }
+    header #banner-2 {
+        width:100%;
+    }
+
+}
