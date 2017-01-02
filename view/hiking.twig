@@ -6,9 +6,14 @@
 
     {% set randos = [
     {'zone':'Vésubie', 'nom':'Mont Colomb', 'denivele':'900', 'kms':'10', 'difficulte':'sport'},
+    {'zone':'Préalpes', 'nom':'Puy de Tourettes', 'denivele':'600', 'kms':'10', 'difficulte':'moyen'},
+    {'zone':'Esterel', 'nom':'Pic d\'Aurelle', 'denivele':'300', 'kms':'10', 'difficulte':'easy'},
+    {'zone':'Préalpes', 'nom':'Puy de Tourettes', 'denivele':'600', 'kms':'10', 'difficulte':'medium'},
     {'zone':'Vésubie', 'nom':'Cime du Mercantour', 'denivele':'1300', 'kms':'10', 'difficulte':'sport'},
+    {'zone':'Préalpes', 'nom':'Baou de saint Jeannet', 'denivele':'600', 'kms':'10', 'difficulte':'medium'},
     {'zone':'Vésubie', 'nom':'Cime des Adus', 'denivele':'500', 'kms':'10', 'difficulte':'medium'},
     {'zone':'Vésubie', 'nom':'Grand Capelet', 'denivele':'1200', 'kms':'10', 'difficulte':'sport'},
+    {'zone':'Préalpes', 'nom':'Le haut Montet', 'denivele':'300', 'kms':'10', 'difficulte':'easy'},
     {'zone':'Vésubie', 'nom':'Lacs Bessons', 'denivele':'800', 'kms':'10', 'difficulte':'medium'},
     {'zone':'Vésubie', 'nom':'Lac de Trécolpas', 'denivele':'500', 'kms':'10', 'difficulte':'medium'},
     {'zone':'Esterel', 'nom':'Mont saint Martin', 'denivele':'300', 'kms':'10', 'difficulte':'easy'},
@@ -31,39 +36,44 @@
     {'zone':'Esterel', 'nom':'Pic d\'Aurelle', 'denivele':'300', 'kms':'10', 'difficulte':'easy'},
 
     ] %}
-    <p>Je vous accompagne pour découvrir cette belle région.</p>
-    <p>Ici la liste des randos que je propose.</p>
-    <p>Vous choisissez la rando je vous montre le chemin.</p>
-    <table>
-        <tr>
-            <td class="easy">Facile</td>
-            <td class="medium">Moyenne</td>
-            <td class="sport">Sportive</td>
-        </tr>
-        <tr>
-            <td>0 - 300 m +/-</td>
-            <td>300 - 600 m +/-</td>
-            <td>600 - 1500 m +/-</td>
-        </tr>
-    </table>
-    <div class="center">
+
+    <div id="content">
+
+        <p>Je vous accompagne pour découvrir cette belle région.</p>
+        <p>Ici la liste des randos que je propose.</p>
+        <p>Vous choisissez la rando je vous montre le chemin.</p>
         <table>
             <tr>
-                <th>Zone</th>
-                <th>Nom</th>
-                <th>Dénivellé</th>
-                <th>Distance</th>
+                <td class="easy">Facile</td>
+                <td class="medium">Moyenne</td>
+                <td class="sport">Sportive</td>
             </tr>
-            {% for rando in randos %}
-                <tr class="{{ rando.difficulte }}">
-                    <td>{{ rando.zone }}</td>
-                    <td>{{ rando.nom }}</td>
-                    <td>{{ rando.denivele }} +/-</td>
-                    <td>{{ rando.kms }} kms</td>
-                </tr>
-            {% endfor %}
+            <tr>
+                <td>0 - 300 m +/-</td>
+                <td>300 - 600 m +/-</td>
+                <td>600 - 1500 m +/-</td>
+            </tr>
         </table>
+        <div class="center">
+            <table>
+                <tr>
+                    <th>Zone</th>
+                    <th>Nom</th>
+                    <th>Dénivellé</th>
+                    <th>Distance</th>
+                </tr>
+                {% for rando in randos %}
+                    <tr class="{{ rando.difficulte }}">
+                        <td>{{ rando.zone }}</td>
+                        <td>{{ rando.nom }}</td>
+                        <td>{{ rando.denivele }} +/-</td>
+                        <td>{{ rando.kms }} kms</td>
+                    </tr>
+                {% endfor %}
+            </table>
 
+
+        </div>
 
     </div>
 

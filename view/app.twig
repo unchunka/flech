@@ -11,19 +11,8 @@
     </head>
     <body>
         <header>
-            <div class="banner">
-
-                <table>
-                    <tr>
-                        <td id="banner-1"></td>
-                        <td id="banner-2"></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="title">
-                <h1>FLECH rando</h1>
-                <span id="autor">Par thierry sambussy</span>
-            </div>
+            <h1>FLECH <span>rando</span></h1>
+            <span id="autor">Par thierry sambussy</span>
         </header>
         <nav>
             <table>
@@ -37,9 +26,7 @@
                 </tr>
             </table>
         </nav>
-        <div id="content">
-            {% block content %}{% endblock %}
-        </div>
+        {% block content %}{% endblock %}
         <footer>
             <p>2016 - 06560 Valbonne</p>
         </footer>

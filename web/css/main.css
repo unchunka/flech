@@ -12,7 +12,7 @@ body {
     font-family: Monaco,"Courier New","courier";
     margin:0px;
     font-size:13px;
-    color:#004239;
+    color:#0C3C60;
 }
 
 h1,h2 {font-weight:normal}
@@ -26,13 +26,9 @@ header {
     font-size:25px;
     color:white;
     font-family: 'JosefinSansStdLight',Arial;
-    margin-bottom:20px;
     position:relative;
-}
-
-header .title {
     padding:5px;
-    background: #4892F5 url('../img/logo-white.jpg') no-repeat left;
+    background: #0C3C60 url('../img/logo-white.jpg') no-repeat left;
     background-size: 70px;
     padding-left:70px;
 }
@@ -41,59 +37,26 @@ header h1 {
     margin-bottom: 0px;
 }
 
+header h1 span {
+    color:#6EA4CA;
+}
+
 header #autor {
-    font-size:15px;
+    font-size:16px;
     padding:3px;
     padding-top:5px;
     padding-bottom:1px;
-    background:#63AFFD;
-}
-
-header .banner {
-    font-size:16px;
-    height:60px;
-    color:black;
-}
-
-header .banner table {
-    width:100%;
-    height:100%;
-    border-collapse: collapse;
-}
-
-header #banner-2 {
-    width:20%;
-    text-align:right;
-    height:40px;
-    width:100%;
-    background:url('../img/bird.png') no-repeat center right;
-
-}
-
-
-#content {
-    padding:0px;
-    padding-top:20px;
-    margin:0px;
-    min-height: 600px;
-    background:#F4F9FB;
-    margin-top:20px;
-    margin-bottom:20px;
-
-}
-
-#content h1,h2 {
-    margin:20px;
+    background:#ecf0f1;
+    color:#0C3C60;
+    font-weight:bold;
 }
 
 nav {
-    background-color: red;
     color: #444;
     margin:auto;
 }
 
 nav table {
-    background-color: green;
     width:100%;
     border-collapse: collapse;
 }
@@ -102,44 +65,35 @@ nav td {
     padding:5px;
     width:16.666%;
     text-align:center;
+    background: #0C3C60;
 }
 
 nav td a {
     text-decoration: none;
     color:white;
-}
-
-nav td.home {
-    background-color: #FF6961;
-}
-
-nav td.news {
-    background-color: #007BA7;
-}
-
-nav td.randos {
-    background-color: #77DD77;
-}
-
-nav td.citations {
-    background-color: #FFB347;
-}
-
-nav td.links {
-    background-color: #966FD6;
-}
-
-nav td.contact {
-    background-color: #188754;
+    font-size:20px;
+    font-family: JosefinSansStdLight;
 }
 
 #content {
-    padding:5px;
+    min-height: 600px;
+    background:#ecf0f1;
+    padding:10px;
+    position:relative;
 }
 
 #content blockquote {
-  text-align: center;
-  padding:10px;
+    padding:5px;
+    margin:30px;
+    border-left:2px solid #6EA4CA;
+}
+
+#content.home, #content.news {
+    padding:0px;
+}
+
+#content h1,h2 {
+    margin:20px;
 }
 
 #content .right {
@@ -155,9 +109,6 @@ nav td.contact {
     border-collapse: collapse;
     width:100%;
     margin-bottom:20px;
-}
-
-#content table th {
 }
 
 #content table td {
@@ -182,12 +133,8 @@ nav td.contact {
     text-align:center;
 }
 
-#content img {
-    border:2px solid black;
-}
-
 footer {
-    background: #4892F5;
+    background: #0C3C60;
     padding:5px;
 }
 
@@ -203,11 +150,12 @@ footer p {
         width: 100%;
         display:block;
     }
+    #content {
+        min-height: 0px;
+    }
     #content .section {
         float: none;
         width:100%;
-    }
-    header #banner-2 {
     }
 
 }
