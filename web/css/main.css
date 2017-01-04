@@ -9,9 +9,9 @@
 }
 
 body {
-    font-family: Monaco,"Courier New","courier";
+    font-family: Kalam,Monaco,"Courier New","courier";
     margin:0px;
-    font-size:13px;
+    font-size:15px;
     color:#0C3C60;
 }
 
@@ -73,6 +73,10 @@ nav td a {
     color:white;
     font-size:20px;
     font-family: JosefinSansStdLight;
+}
+
+nav td a:hover {
+    color:yellow;
 }
 
 #content {
