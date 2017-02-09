@@ -3,13 +3,8 @@
     src: url("bb.ttf") format("opentype");
 }
 
-@font-face {
-    font-family: aaa;
-    src: url("4.ttf") format("opentype");
-}
-
 body {
-    font-family: Kalam,Monaco,"Courier New","courier";
+    font-family: Kalam, Monaco,"Courier New","courier";
     margin:0px;
     font-size:15px;
     color:#0C3C60;
@@ -116,7 +111,7 @@ nav td a:hover {
 }
 
 #content table td {
-    border: 2px solid #F4F9FB;
+    border: 2px solid #ecf0f1;
     padding:5px;
     width:25%;
 }
@@ -140,13 +135,31 @@ nav td a:hover {
 footer {
     background: #0C3C60;
     padding:5px;
+    position:relative;
 }
 
 footer p {
-    font-family: 'JosefinSansStdLight',Arial;
     font-size:large;
     color:white;
-    text-align:center;
+    text-align:left;
+}
+
+footer #social img.facebook {
+    height:25px;
+}
+
+footer #social img.twitter {
+    height:30px;
+}
+
+footer #social {
+    position:absolute;
+    top:10%;
+    right:5%;
+}
+
+footer #social a {
+    margin-left:10px;
 }
 
 @media only screen and (max-width: 768px) {
