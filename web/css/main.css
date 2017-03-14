@@ -6,7 +6,7 @@
 body {
     font-family: Kalam, Monaco,"Courier New","courier";
     margin:0px;
-    font-size:15px;
+    font-size:16px;
     color:#0C3C60;
 }
 
@@ -47,12 +47,9 @@ header #autor {
     font-weight:bold;
 }
 
-header #hamburger, #social {
-    width:40px;
-    padding:5px;
-}
-
 header #hamburger {
+    width:35px;
+    padding:5px;
     position:absolute;
     top:10px;
     right:10px;
@@ -73,16 +70,11 @@ header #social {
 }
 
 header #social img.facebook {
-    height:25px;
-    display:block;
-    padding:5px;
+    height:30px;
 }
 
 header #social img.twitter {
     height:30px;
-    display:block;
-    border-bottom:2px solid #6EA4CA;
-    padding:5px;
 }
 
 nav {
