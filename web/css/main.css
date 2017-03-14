@@ -47,6 +47,11 @@ header #autor {
     font-weight:bold;
 }
 
+header #hamburger, #social {
+    width:40px;
+    padding:5px;
+}
+
 header #hamburger {
     position:absolute;
     top:10px;
@@ -56,9 +61,28 @@ header #hamburger {
 }
 
 header #hamburger div {
-    width:30px;
+    width:100%;
     border-top:3px solid white;
     margin-top:7px;
+}
+
+header #social {
+    position:absolute;
+    top:60px;
+    right:10px;
+}
+
+header #social img.facebook {
+    height:25px;
+    display:block;
+    padding:5px;
+}
+
+header #social img.twitter {
+    height:30px;
+    display:block;
+    border-bottom:2px solid #6EA4CA;
+    padding:5px;
 }
 
 nav {
@@ -160,24 +184,6 @@ footer p {
     text-align:left;
 }
 
-footer #social img.facebook {
-    height:25px;
-}
-
-footer #social img.twitter {
-    height:30px;
-}
-
-footer #social {
-    position:absolute;
-    top:10%;
-    right:5%;
-}
-
-footer #social a {
-    margin-left:10px;
-}
-
 @media only screen and (max-width: 768px) {
     nav {
         display:none;
@@ -192,6 +198,9 @@ footer #social a {
     #content .section {
         float: none;
         width:100%;
+    }
+    header h1 span {
+        display:block;
     }
 
 }
