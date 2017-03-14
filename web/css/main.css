@@ -63,20 +63,6 @@ header #hamburger div {
     margin-top:7px;
 }
 
-header #social {
-    position:absolute;
-    top:60px;
-    right:10px;
-}
-
-header #social img.facebook {
-    height:30px;
-}
-
-header #social img.twitter {
-    height:30px;
-}
-
 nav {
     display:block;
     color: #444;
@@ -174,6 +160,20 @@ footer p {
     font-size:large;
     color:white;
     text-align:left;
+}
+
+footer #social {
+    position:absolute;
+    top:20px;
+    right:10px;
+}
+
+footer #social img.facebook {
+    height:30px;
+}
+
+footer #social img.twitter {
+    height:30px;
 }
 
 @media only screen and (max-width: 768px) {
