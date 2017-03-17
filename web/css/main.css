@@ -8,7 +8,11 @@ body {
     margin:0px;
     font-size:16px;
     color:#0C3C60;
+    background:url('../img/home.jpg')no-repeat center center fixed;
+    background-size: cover;
 }
+
+
 
 h1,h2 {font-weight:normal}
 
@@ -27,6 +31,14 @@ header {
     background-size: 100px;
     padding:20px;
     padding-left:100px;
+}
+
+header, nav, footer {
+    opacity: 0.9;
+}
+
+#content.home {
+    opacity: 0.0;
 }
 
 header h1 {
@@ -165,7 +177,7 @@ footer p {
 footer #social {
     position:absolute;
     top:20px;
-    right:10px;
+    right:20px;
 }
 
 footer #social img.facebook {
@@ -174,6 +186,7 @@ footer #social img.facebook {
 
 footer #social img.twitter {
     height:30px;
+    margin-right:10px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -185,7 +198,7 @@ footer #social img.twitter {
         display:block;
     }
     #content {
-        min-height: 0px;
+        min-height: 50vh;
     }
     #content .section {
         float: none;
