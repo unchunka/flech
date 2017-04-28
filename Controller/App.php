@@ -3,8 +3,10 @@
 namespace Controller;
 
 use Silex\Application;
+use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
+use Symfony\Component\Yaml\Yaml;
 
 class App {
 
@@ -26,7 +28,7 @@ class App {
 
     }
 
-    function initRooting () {
+    public function initRooting () {
 
         $app = $this->app;
 
@@ -46,17 +48,37 @@ class App {
             return $app['twig']->render('citations.twig');
         })->bind('citations');
 
-        $app->get('/links', function () use ($app) {
+        $app->get('/liens', function () use ($app) {
             return $app['twig']->render('links.twig');
         })->bind('links');
 
-        $app->get('/news', function () use ($app) {
-            return $app['twig']->render('news.twig');
-        })->bind('news');
+        $app->get('/pictures', function () use ($app) {
+            return $app['twig']->render('pictures.twig');
+        })->bind('pictures');
 
         $app->get('/randos', function () use ($app) {
             return $app['twig']->render('hiking.twig');
         })->bind('randos');
+
+    }
+
+    public function initDoctrine () {
+
+        $dbConfig = Yaml::parse(file_get_contents(__DIR__.'/../config/db.yml'));
+
+        $this->app->register(new DoctrineServiceProvider(), [
+            'db.options' => [
+                'driver'   => 'pdo_mysql',
+                'dbname' => $dbConfig['dbname'],
+                'host' => $dbConfig['host'],
+                'user' => $dbConfig['user'],
+                'password' => $dbConfig['password'],
+                'charset' => 'UTF8'
+            ],
+        ]);
+
+        //$dd = $this->app['db']->fetchAll('SELECT * FROM hike');
+        //$d = 2;
 
     }
 

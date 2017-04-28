@@ -121,6 +121,33 @@ nav td a:hover {
     padding:0px;
 }
 
+#content.contact {
+    background : #ecf0f1 url('../img/moi.jpg') bottom  no-repeat;
+    background-size: cover;
+    position:relative;
+}
+
+#content.pictures img {
+    border:1px solid silver;
+    max-height:300px;
+    border:1px solid silver;
+}
+
+#content.pictures img:hover {
+    cursor:pointer;
+}
+
+#content.contact p {
+    color:white;
+    font-size:large;
+    position:absolute;
+    bottom:50%;
+    left:50%;
+    padding:10px;
+    background:black;
+    opacity:0.50;
+}
+
 #content h1,h2 {
     margin:20px;
 }
@@ -176,22 +203,7 @@ footer {
 footer p {
     font-size:large;
     color:white;
-    text-align:left;
-}
-
-footer #social {
-    position:absolute;
-    top:20px;
-    right:20px;
-}
-
-footer #social img.facebook {
-    height:30px;
-}
-
-footer #social img.twitter {
-    height:30px;
-    margin-right:10px;
+    text-align:center;
 }
 
 @media only screen and (max-width: 768px) {

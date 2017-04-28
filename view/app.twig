@@ -5,7 +5,7 @@
         <title>{% block title %}{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="flech, rando" />
+        <meta name="keywords" content="flech, rando, thierry sambussy" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script type="text/javascript" src="js/analytics.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
@@ -26,7 +26,7 @@
             <table>
                 <tr>
                     <td class="home"><a href="{{ url('home') }}">HOME</a></td>
-                    <td class="news"><a href="{{ url('news') }}">NEWS</a></td>
+                    <td class="pictures"><a href="{{ url('pictures') }}">PHOTOS</a></td>
                     <td class="randos"><a href="{{ url('randos') }}">RANDOS</a></td>
                     <td class="citations"><a href="{{ url('citations') }}">CITATIONS</a></td>
                     <td class="links"><a href="{{ url('links') }}">LIENS</a></td>
@@ -37,10 +37,6 @@
         {% block content %}{% endblock %}
         <footer>
             <p>2017 - 06560 Valbonne</p>
-            <div id="social">
-                <a href="https://twitter.com/flech_fr"><img src="img/twitter.png" class="twitter" /></a>
-                <a href="https://www.facebook.com/Flech-rando-389484361403828/" ><img src="img/facebook.png" class="facebook" /></a>
-            </div>
         </footer>
     </body>
 
