@@ -28,9 +28,9 @@ header {
     position:relative;
     padding:5px;
     background: #0C3C60 url('../img/logo.png') no-repeat left;
-    background-size: 100px;
+    background-size: 180px;
     padding:20px;
-    padding-left:100px;
+    padding-left:170px;
 }
 
 header, nav, footer {
@@ -121,12 +121,6 @@ nav td a:hover {
     padding:0px;
 }
 
-#content.contact {
-    background : #ecf0f1 url('../img/moi.jpg') bottom  no-repeat;
-    background-size: cover;
-    position:relative;
-}
-
 #content.pictures img {
     border:1px solid silver;
     max-height:300px;
@@ -135,17 +129,6 @@ nav td a:hover {
 
 #content.pictures img:hover {
     cursor:pointer;
-}
-
-#content.contact p {
-    color:white;
-    font-size:large;
-    position:absolute;
-    bottom:50%;
-    left:50%;
-    padding:10px;
-    background:black;
-    opacity:0.50;
 }
 
 #content h1,h2 {
@@ -189,6 +172,10 @@ nav td a:hover {
     text-align:center;
 }
 
+#content.me h3,p {
+    text-align:center;
+}
+
 #content #twitter {
     max-width:1200px;
     margin:auto;
@@ -223,6 +210,10 @@ footer p {
     }
     header h1 span {
         display:block;
+    }
+    header {
+        background-size: 120px;
+        padding-left:100px;
     }
 
 }

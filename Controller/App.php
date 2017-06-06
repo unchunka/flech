@@ -40,9 +40,9 @@ class App {
             return $app['twig']->render('home.twig');
         })->bind('home');
 
-        $app->get('/contact', function () use ($app) {
-            return $app['twig']->render('contact.twig');
-        })->bind('contact');
+        $app->get('/me', function () use ($app) {
+            return $app['twig']->render('me.twig');
+        })->bind('me');
 
         $app->get('/citations', function () use ($app) {
             return $app['twig']->render('citations.twig');
