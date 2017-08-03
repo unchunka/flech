@@ -1,6 +1,5 @@
 {
 	"require" : {
-		"doctrine/dbal": "~2.5",
 		"silex/silex"			: "1.0.*@dev",
 		"twig/twig"				: "1.12.*",
 		"symfony/twig-bridge"	: "2.1.*",
@@ -8,6 +7,9 @@
 		"symfony/yaml":"~3.0"
 	},
 	"autoload": {
-		"psr-0": {"Controller": ""}
+		"psr-0": {
+			"Model":"",
+			"Controller": ""
+		}
 	}
 }

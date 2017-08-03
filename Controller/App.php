@@ -2,11 +2,10 @@
 
 namespace Controller;
 
+use Model\Hike;
 use Silex\Application;
-use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
-use Symfony\Component\Yaml\Yaml;
 
 class App {
 
@@ -62,30 +61,24 @@ class App {
 
     }
 
-    public function initDoctrine () {
-
-        $dbConfig = Yaml::parse(file_get_contents(__DIR__.'/../config/db.yml'));
-
-        $this->app->register(new DoctrineServiceProvider(), [
-            'db.options' => [
-                'driver'   => 'pdo_mysql',
-                'dbname' => $dbConfig['dbname'],
-                'host' => $dbConfig['host'],
-                'user' => $dbConfig['user'],
-                'password' => $dbConfig['password'],
-                'charset' => 'UTF8'
-            ],
-        ]);
-
-        //$dd = $this->app['db']->fetchAll('SELECT * FROM hike');
-        //$d = 2;
-
-    }
-
     public function run () {
 
         $this->app->run();
 
     }
+
+    public function test () {
+
+        $hike = Hike::load();
+        echo "\nget name\n";
+        echo $hike->get('name');
+        echo "\nset name\n";
+        $hike->set('name',"totosss");
+        echo $hike->get('name');
+        echo "\nsave the hike\n";
+        $hike->update();
+    }
+
+
 
 }
