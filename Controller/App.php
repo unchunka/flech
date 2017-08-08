@@ -56,7 +56,8 @@ class App {
         })->bind('pictures');
 
         $app->get('/randos', function () use ($app) {
-            return $app['twig']->render('hiking.twig');
+            $hikes = Hike::findAll();
+            return $app['twig']->render('hiking.twig', ['hikes' => $hikes]);
         })->bind('randos');
 
     }
@@ -66,19 +67,6 @@ class App {
         $this->app->run();
 
     }
-
-    public function test () {
-
-        $hike = Hike::load();
-        echo "\nget name\n";
-        echo $hike->get('name');
-        echo "\nset name\n";
-        $hike->set('name',"totosss");
-        echo $hike->get('name');
-        echo "\nsave the hike\n";
-        $hike->update();
-    }
-
 
 
 }

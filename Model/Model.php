@@ -6,24 +6,12 @@ abstract class Model {
 
     protected $properties = [];
 
-    public function __construct() {
-
-        $className = $this->getFormattedClassName();
-
-        $pdo = PDOManager::getInstance()->getPDO();
-        $stmt = $pdo->prepare("DESCRIBE $className");
-        $stmt->execute();
-
-        $this->properties = $stmt->fetchAll(\PDO::FETCH_COLUMN);
-
-    }
+    public function __construct() {}
 
     public function get($property) {
 
-        foreach($this->properties as $theProperty) {
-            if ($theProperty == $property) {
-                return $this->$property;
-            }
+        if (array_key_exists($property,$this->properties)) {
+            return $this->properties[$property];
         }
 
         return null;
@@ -32,35 +20,30 @@ abstract class Model {
 
     public function set($property, $value) {
 
-        foreach($this->properties as $theProperty) {
-            if ($theProperty == $property) {
-                $this->$property = $value;
-                return $this;
-            }
+        if (array_key_exists($property,$this->properties)) {
+            $this->properties[$property] = $value;
         }
 
-        return null;
+        return $this;
 
     }
 
     public function update() {
 
-        $className = $this->getFormattedClassName();
+        $className = self::getFormattedClassName();
 
         $pdo = PDOManager::getInstance()->getPDO();
 
         $values = [];
-        foreach ($this->properties as $property) {
-            $values[$property] = $this->$property;
-        }
+        $valuesBinding = [];
 
-        $updateArray = [];
-        for ($i = 0 ; $i < count($this->properties) ; ++$i) {
-            $updateArray[] = $this->properties[$i]." = :".$this->properties[$i];
+        foreach ($this->properties as $property => $value) {
+            $values[$property] = $value;
+            $valuesBinding[] = $property." = :".$property;
         }
-        $updateStr = implode(',',$updateArray);
+        $valuesBinding = implode(',',$valuesBinding);
 
-        $stmt = $pdo->prepare("UPDATE $className SET ".$updateStr." WHERE id = :id");
+        $stmt = $pdo->prepare("UPDATE $className SET ".$valuesBinding." WHERE id = :id");
 
         $result = $stmt->execute($values);
 
@@ -70,20 +53,25 @@ abstract class Model {
 
     public function save() {
 
-        $className = $this->getFormattedClassName();
+        $className = self::getFormattedClassName();
 
         $pdo = PDOManager::getInstance()->getPDO();
 
         $values = [];
-        foreach ($this->properties as $property) {
-            $values[] = $this->$property;
+        $valuesBinding = [];
+        $properties = [];
+
+        foreach ($this->properties as $property => $value) {
+            if ($property == 'id') continue;
+            $values[$property] = $value;
+            $valuesBinding[] = ":".$property;
+            $properties[] = $property;
         }
+        $valuesBinding = implode(',',$valuesBinding);
 
-        $propertiesStr = implode(',',$this->properties);
+        $propertiesStr = implode(',',$properties);
 
-        $valuesStr = substr(str_repeat('?,',count($this->properties)),0,count($this->properties)-1);
-
-        $stmt = $pdo->prepare("INSERT INTO $className (".$propertiesStr.") VALUES (".$valuesStr.")");
+        $stmt = $pdo->prepare("INSERT INTO $className (".$propertiesStr.") VALUES (".$valuesBinding.")");
 
         $result = $stmt->execute($values);
 
@@ -93,21 +81,63 @@ abstract class Model {
 
     public function delete() {
 
-        $className = $this->getFormattedClassName();
+        $className = self::getFormattedClassName();
 
         $pdo = PDOManager::getInstance()->getPDO();
 
-        $stmt = $pdo->prepare("DELETE FROM $className WHERE id = ".$this->get('id'));
+        $stmt = $pdo->prepare("DELETE FROM $className WHERE id = :id");
 
-        $result = $stmt->execute([]);
+        $result = $stmt->execute(['id' => $this->get('id')]);
 
         return $result;
 
     }
 
-    private function getFormattedClassName() {
+    public static function find($id) {
 
-        return lcfirst(end(explode('\\',get_called_class())));
+        $className = self::getFormattedClassName();
+
+        $pdo = PDOManager::getInstance()->getPDO();
+
+        $stmt = $pdo->prepare("SELECT * FROM $className WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(\PDO::FETCH_NUM);
+
+        return self::getObjectFromArrayResult($result);
+
+    }
+
+    public static function findAll() {
+
+        $className = self::getFormattedClassName();
+
+        $pdo = PDOManager::getInstance()->getPDO();
+
+        $stmt = $pdo->prepare("SELECT * FROM $className");
+        $stmt->execute();
+        $results = $stmt->fetchAll(\PDO::FETCH_NUM);
+
+        $objects = [];
+        foreach($results as $result) {
+            $objects[] = self::getObjectFromArrayResult($result);
+        }
+
+        return $objects;
+
+    }
+
+
+    private static function getFormattedClassName() {
+
+        $explodedClassName = explode('\\',get_called_class());
+        return lcfirst(end($explodedClassName));
+
+    }
+
+    private static function getObjectFromArrayResult($result) {
+
+        $reflector = new \ReflectionClass(get_called_class());
+        return $reflector->newInstanceArgs($result);
 
     }
 

@@ -4,16 +4,14 @@ namespace Model;
 
 class Hike extends Model {
 
-    public static function load() {
+    public function __construct($id, $name, $region, $distance, $difference, $difficulty) {
 
-        $pdo = PDOManager::getInstance()->getPDO();
-
-        $stmt = $pdo->prepare('SELECT * FROM hike');
-        $stmt->execute();
-
-        return $stmt->fetchObject(__CLASS__);
-
+        $this->properties['id'] = $id;
+        $this->properties['name'] = $name;
+        $this->properties['region'] = $region;
+        $this->properties['distance'] = $distance;
+        $this->properties['different'] = $difference;
+        $this->properties['difficulty'] = $difficulty;
     }
-
 
 }
