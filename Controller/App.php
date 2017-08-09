@@ -3,7 +3,9 @@
 namespace Controller;
 
 use Model\Hike;
+use Monolog\Logger;
 use Silex\Application;
+use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 
@@ -24,6 +26,11 @@ class App {
         ));
 
         $this->app['twig']->addExtension(new \Twig_Extensions_Extension_I18n());
+
+        $this->app->register(new MonologServiceProvider(), array(
+            'monolog.logfile' => __DIR__.'/../logs/errors-'. date('d-m-y').'.log',
+            'monolog.level' => Logger::WARNING
+        ));
 
     }
 
@@ -55,7 +62,7 @@ class App {
             return $app['twig']->render('pictures.twig');
         })->bind('pictures');
 
-        $app->get('/randos', function () use ($app) {
+        $app->get('/randos', function () use($app) {
             $hikes = Hike::findAll();
             return $app['twig']->render('hiking.twig', ['hikes' => $hikes]);
         })->bind('randos');
