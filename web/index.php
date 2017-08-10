@@ -11,4 +11,6 @@ $app->initRooting();
 
 $app->run();
 
+$app->commit();
+
 ?>

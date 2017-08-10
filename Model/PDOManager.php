@@ -14,6 +14,8 @@ class PDOManager {
 
         $this->pdo = new \PDO("mysql:host=".$dbConfig['host'].";dbname=".$dbConfig['dbname'].";charset=utf8", $dbConfig['user'], $dbConfig['password']);
 
+        $this->pdo->beginTransaction();
+
     }
 
     public function getPDO() {
