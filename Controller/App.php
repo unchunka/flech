@@ -3,11 +3,14 @@
 namespace Controller;
 
 use Model\Hike;
+use Model\PDOManager;
+use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Silex\Application;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
+use Symfony\Component\Yaml\Yaml;
 
 class App {
 
@@ -28,9 +31,16 @@ class App {
         $this->app['twig']->addExtension(new \Twig_Extensions_Extension_I18n());
 
         $this->app->register(new MonologServiceProvider(), array(
-            'monolog.logfile' => __DIR__.'/../logs/errors-'. date('d-m-y').'.log',
+            'monolog.name' => 'system',
+            'monolog.logfile' => __DIR__.'/../logs/system-'. date('d-m-y').'.log',
             'monolog.level' => Logger::WARNING
         ));
+
+        $app['logger'] = function () {
+            $t = new Logger('app');
+            $t->pushHandler(new StreamHandler(__DIR__.'/../logs/debug-'. date('d-m-y').'.log',Logger::DEBUG));
+            return $t;
+        };
 
     }
 
@@ -72,6 +82,12 @@ class App {
     public function run () {
 
         $this->app->run();
+
+    }
+
+    public function commit() {
+
+        PDOManager::getInstance()->getPDO()->commit();
 
     }
 
