@@ -2,8 +2,12 @@
 
 namespace Controller;
 
+use Model\Hike;
+use Model\PDOManager;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Silex\Application;
-use Silex\Provider\DoctrineServiceProvider;
+use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Symfony\Component\Yaml\Yaml;
@@ -26,6 +30,18 @@ class App {
 
         $this->app['twig']->addExtension(new \Twig_Extensions_Extension_I18n());
 
+        $this->app->register(new MonologServiceProvider(), array(
+            'monolog.name' => 'system',
+            'monolog.logfile' => __DIR__.'/../logs/system-'. date('d-m-y').'.log',
+            'monolog.level' => Logger::WARNING
+        ));
+
+        $app['logger'] = function () {
+            $t = new Logger('app');
+            $t->pushHandler(new StreamHandler(__DIR__.'/../logs/debug-'. date('d-m-y').'.log',Logger::DEBUG));
+            return $t;
+        };
+
     }
 
     public function initRooting () {
@@ -40,9 +56,9 @@ class App {
             return $app['twig']->render('home.twig');
         })->bind('home');
 
-        $app->get('/contact', function () use ($app) {
-            return $app['twig']->render('contact.twig');
-        })->bind('contact');
+        $app->get('/me', function () use ($app) {
+            return $app['twig']->render('me.twig');
+        })->bind('me');
 
         $app->get('/citations', function () use ($app) {
             return $app['twig']->render('citations.twig');
@@ -56,29 +72,10 @@ class App {
             return $app['twig']->render('pictures.twig');
         })->bind('pictures');
 
-        $app->get('/randos', function () use ($app) {
-            return $app['twig']->render('hiking.twig');
+        $app->get('/randos', function () use($app) {
+            $hikes = Hike::findAll();
+            return $app['twig']->render('hiking.twig', ['hikes' => $hikes]);
         })->bind('randos');
-
-    }
-
-    public function initDoctrine () {
-
-        $dbConfig = Yaml::parse(file_get_contents(__DIR__.'/../config/db.yml'));
-
-        $this->app->register(new DoctrineServiceProvider(), [
-            'db.options' => [
-                'driver'   => 'pdo_mysql',
-                'dbname' => $dbConfig['dbname'],
-                'host' => $dbConfig['host'],
-                'user' => $dbConfig['user'],
-                'password' => $dbConfig['password'],
-                'charset' => 'UTF8'
-            ],
-        ]);
-
-        //$dd = $this->app['db']->fetchAll('SELECT * FROM hike');
-        //$d = 2;
 
     }
 
@@ -87,5 +84,12 @@ class App {
         $this->app->run();
 
     }
+
+    public function commit() {
+
+        PDOManager::getInstance()->getPDO()->commit();
+
+    }
+
 
 }

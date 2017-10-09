@@ -9,8 +9,8 @@ $app = new \Controller\App();
 
 $app->initRooting();
 
-$app->initDoctrine();
-
 $app->run();
+
+$app->commit();
 
 ?>

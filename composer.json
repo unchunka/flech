@@ -1,13 +1,17 @@
 {
 	"require" : {
-		"doctrine/dbal": "~2.5",
 		"silex/silex"			: "1.0.*@dev",
 		"twig/twig"				: "1.12.*",
 		"symfony/twig-bridge"	: "2.1.*",
 		"twig/extensions": "1.0.*@dev",
-		"symfony/yaml":"~3.0"
+		"symfony/yaml":"~3.0",
+		"monolog/monolog": "^1.23",
+		"phpunit/phpunit": "^6.3"
 	},
 	"autoload": {
-		"psr-0": {"Controller": ""}
+		"psr-0": {
+			"Model":"",
+			"Controller": ""
+		}
 	}
 }
