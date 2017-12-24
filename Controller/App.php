@@ -30,6 +30,7 @@ class App {
 
         $this->app['twig']->addExtension(new \Twig_Extensions_Extension_I18n());
 
+        /* DO NOT ACTIVATE LOG * /
         $this->app->register(new MonologServiceProvider(), array(
             'monolog.name' => 'system',
             'monolog.logfile' => __DIR__.'/../logs/system-'. date('d-m-y').'.log',
@@ -41,6 +42,7 @@ class App {
             $t->pushHandler(new StreamHandler(__DIR__.'/../logs/debug-'. date('d-m-y').'.log',Logger::DEBUG));
             return $t;
         };
+        /**/
 
     }
 
@@ -60,9 +62,9 @@ class App {
             return $app['twig']->render('me.twig');
         })->bind('me');
 
-        $app->get('/citations', function () use ($app) {
-            return $app['twig']->render('citations.twig');
-        })->bind('citations');
+        $app->get('/quotes', function () use ($app) {
+            return $app['twig']->render('quotes.twig');
+        })->bind('quotes');
 
         $app->get('/liens', function () use ($app) {
             return $app['twig']->render('links.twig');
@@ -72,10 +74,15 @@ class App {
             return $app['twig']->render('pictures.twig');
         })->bind('pictures');
 
-        $app->get('/randos', function () use($app) {
+        $app->get('/hiking', function () use($app) {
             $hikes = Hike::findAll();
             return $app['twig']->render('hiking.twig', ['hikes' => $hikes]);
-        })->bind('randos');
+        })->bind('hiking');
+
+        $app->get('/equipment', function () use($app) {
+            $hikes = Hike::findAll();
+            return $app['twig']->render('equipment.twig', ['hikes' => $hikes]);
+        })->bind('equipment');
 
     }
 
