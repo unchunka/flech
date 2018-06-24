@@ -24,14 +24,12 @@
                     <th>Zone</th>
                     <th>Nom</th>
                     <th>Dénivellé</th>
-                    <th>Distance</th>
                 </tr>
                 {% for hike in hikes %}
                     <tr class="{{ hike.get('difficulty') }}">
                         <td>{{ hike.get('name') }}</td>
                         <td>{{ hike.get('region') }}</td>
                         <td>{{ hike.get('different') }} +/-</td>
-                        <td>{{ hike.get('distance') }} kms</td>
                     </tr>
                 {% endfor %}
             </table>
