@@ -144,27 +144,38 @@ nav td a:hover {
     width:50%;
 }
 
-#content table {
+#content.hiking table {
     border-collapse: collapse;
     width:100%;
     margin-bottom:20px;
 }
 
-#content table td {
+#content.hiking table td {
     border: 2px solid #ecf0f1;
     padding:5px;
-    width:25%;
 }
 
-#content table .easy {
+#content.hiking table td.name,
+#content.hiking table td.region,
+#content.hiking table td.link,
+#content.hiking table td.different  {
+    width:10%;
+}
+
+#content.hiking table td.description {
+    width:60%;
+
+}
+
+#content.hiking table .easy {
     background:#FDFD96;
 }
 
-#content table .medium {
+#content.hiking table .medium {
     background:#FFB347;
 }
 
-#content table .sport {
+#content.hiking table .sport {
     background:#FF6961;
 }
 
@@ -215,5 +226,18 @@ footer p {
         background-size: 120px;
         padding-left:100px;
     }
-
+    #content.hiking table td.name,
+    #content.hiking table td.region,
+    #content.hiking table td.link,
+    #content.hiking table td.different,
+    #content.hiking table td.description {
+        width:100%;
+        display:block;
+    }
+    #content.hiking table tr th {
+        display:none;
+    }
+    #content.hiking table tr {
+        border-bottom:20px solid #ecf0f1;
+    }
 }

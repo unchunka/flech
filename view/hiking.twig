@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <div id="content">
+    <div id="content" class="hiking">
 
         <table>
             <tr>
@@ -29,11 +29,11 @@
                 </tr>
                 {% for hike in hikes %}
                     <tr class="{{ hike.get('difficulty') }}">
-                        <td>{{ hike.get('name') }}</td>
-                        <td>{{ hike.get('region') }}</td>
-                        <td>{{ hike.get('different') }} +/-</td>
-                        <td>{{ hike.get('description') }}</td>
-                        <td><a href="{{ hike.get('link') }}">IGN</a></td>
+                        <td class="name">{{ hike.get('name') }}</td>
+                        <td class="region">{{ hike.get('region') }}</td>
+                        <td class="different">{{ hike.get('different') }} +/-</td>
+                        <td class="description">{{ hike.get('description') }}</td>
+                        <td class="link"><a href="{{ hike.get('link') }}">IGN</a></td>
                     </tr>
                 {% endfor %}
             </table>
