@@ -5,41 +5,42 @@
         <title>{% block title %}{% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="flech, rando, thierry sambussy" />
+        <meta name="keywords" content="randomega, rando, thierry sambussy" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script type="text/javascript" src="js/analytics.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kalam|Cute+Font" rel="stylesheet">
         <link rel="icon" type="image/png" href="img/favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Cute+Font|Faster+One|Fredericka+the+Great|Frijole|Italianno|Seaweed+Script&display=swap" rel="stylesheet">
+
+
     </head>
     <body>
-        <header>
-            <h1>FLECH <span>rando</span></h1>
-            <span id="autor">Par <a href="http://www.thierry-sambussy.fr">thierry sambussy</a></span>
-            <div id="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-        </header>
-        <nav>
-            <table>
-                <tr>
-                    <td class="home"><a href="{{ url('home') }}">HOME</a></td>
-                    <td class="pictures"><a href="{{ url('pictures') }}">PHOTOS</a></td>
-                    <td class="hiking"><a href="{{ url('hiking') }}">RANDOS</a></td>
-                    <td class="equipment"><a href="{{ url('equipment') }}">EQUIPEMENT</a></td>
-                    <td class="links"><a href="{{ url('links') }}">LIENS</a></td>
-                    <td class="quotes"><a href="{{ url('quotes') }}">CITATIONS</a></td>
-                    <td class="me"><a href="{{ url('me') }}">MOI</a></td>
-                </tr>
-            </table>
-        </nav>
-        {% block content %}{% endblock %}
-        <!-- <footer>
-            <p>2017 - 06250 Mougins le haut</p>
-        </footer> -->
+        <div id="main">
+            <header>
+                <h1>RANDO<span>mega</span></h1>
+                <div id="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </header>
+            <nav>
+                <table>
+                    <tr>
+                        <td class="home"><a href="{{ url('home') }}">HOME</a></td>
+                        <td class="pictures"><a href="{{ url('pictures') }}">PHOTOS</a></td>
+                        <td class="hiking"><a href="{{ url('hiking') }}">RANDOS</a></td>
+                        <td class="equipment"><a href="{{ url('equipment') }}">EQUIPEMENT</a></td>
+                        <td class="links"><a href="{{ url('links') }}">LIENS</a></td>
+                        <td class="quotes"><a href="{{ url('quotes') }}">CITATIONS</a></td>
+                        <td class="me"><a href="{{ url('me') }}">MOI</a></td>
+                    </tr>
+                </table>
+            </nav>
+            {% block content %}{% endblock %}
+            <footer><p>Par <a href="http://thierry-sambussy.fr">Thierry Sambussy</a></p></footer>
+        </div>
     </body>
 
 </html>

@@ -8,11 +8,15 @@ body {
     margin:0px;
     font-size:16px;
     color:#0C3C60;
-    background:url('../img/home.jpg')no-repeat center center fixed;
-    background-size: cover;
 }
 
-
+#main {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: "header" "nav" "content" "footer";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 100%;
+}
 
 h1,h2 {font-weight:normal}
 
@@ -31,14 +35,7 @@ header {
     background-size: 180px;
     padding:20px;
     padding-left:170px;
-}
-
-header, nav, footer {
-    opacity: 0.9;
-}
-
-#content.home {
-    opacity: 0.0;
+    grid-area: header;
 }
 
 header h1 {
@@ -50,11 +47,13 @@ header h1 span {
 }
 
 header #autor {
-    font-size:16px;
+    font-family:'Cute Font';
+    font-size:18px;
     padding:5px;
     background:#ecf0f1;
     color:#0C3C60;
     font-weight:bold;
+    border-radius:40%;
 }
 
 header #hamburger {
@@ -65,6 +64,7 @@ header #hamburger {
     right:10px;
     height:50px;
     cursor:pointer;
+    display:none;
 }
 
 header #hamburger div {
@@ -76,7 +76,7 @@ header #hamburger div {
 nav {
     display:block;
     color: #444;
-    margin:auto;
+    grid-area: nav;
 }
 
 nav table {
@@ -103,10 +103,10 @@ nav td a:hover {
 }
 
 #content {
-    min-height: 600px;
     background:#ecf0f1;
     padding:10px;
     position:relative;
+    grid-area: content;
 }
 
 #content blockquote {
@@ -142,40 +142,42 @@ nav td a:hover {
     width:50%;
 }
 
-#content.hiking table {
-    border-collapse: collapse;
-    width:100%;
-    margin-bottom:20px;
+#content.hiking .hike {
+    width: 230px;
+    display: inline-block;
+    padding: 5px;
+    background: red;
+    border:1px solid silver;
+    margin:10px;
 }
 
-#content.hiking table td {
-    border: 2px solid #ecf0f1;
-    padding:5px;
+#content.hiking .etc {
+    display: inline-block;
+    font-size:23px;
 }
 
-#content.hiking table td.name,
-#content.hiking table td.region,
-#content.hiking table td.link,
-#content.hiking table td.different  {
-    width:10%;
+#content.hiking .hike.difficile {
+    background:#FF6961;
 }
 
-#content.hiking table td.description {
-    width:60%;
-
-}
-
-#content.hiking table .easy {
-    background:#FDFD96;
-}
-
-#content.hiking table .medium {
+#content.hiking .hike.moyenne {
     background:#FFB347;
 }
 
-#content.hiking table .sport {
-    background:#FF6961;
+#content.hiking .hike.facile {
+    background:#FDFD96;
 }
+
+#content.hiking .hike .name {
+    font-weight:bold;
+}
+
+#content.hiking .hike .difference {
+}
+
+#content.hiking .hike .zone {
+}
+
 
 #content .center {
     text-align:center;
@@ -185,21 +187,69 @@ nav td a:hover {
     text-align:center;
 }
 
+#content.me img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #content #twitter {
     max-width:1200px;
     margin:auto;
 }
 
+#content.home #moz {
+    display: grid;
+    grid-template-areas: "pictures equipment" "hiking link";
+    grid-template-rows: auto auto;
+    grid-template-columns: 50% 50%;
+    margin-left:50px;
+    margin-top:50px;
+}
+
+#content.home #moz div {
+    margin:40px;
+    padding:20px;
+    background:white;
+    border-radius: 10px;
+}
+
+#content.home #moz div a {
+    text-decoration:none;
+    background:#ecf0f1;
+    padding:5px;
+}
+
+
+#content.home #pictures {
+    grid-area: pictures;
+}
+
+#content.home #equipment {
+    grid-area: equipment;
+}
+
+#content.home #hiking {
+    grid-area: hiking;
+}
+
+#content.home #link {
+    grid-area: link;
+}
+
 footer {
     background: #0C3C60;
-    padding:5px;
-    position:relative;
+    grid-area: footer;
 }
 
 footer p {
-    font-size:large;
-    color:white;
     text-align:center;
+    color:white;
+}
+
+
+footer a {
+    color:white;
 }
 
 @media only screen and (max-width: 768px) {
@@ -237,5 +287,15 @@ footer p {
     }
     #content.hiking table tr {
         border-bottom:20px solid #ecf0f1;
+    }
+    header #hamburger {
+        display:block;
+    }
+
+    #content.home #moz {
+        grid-template-areas: "pictures" "equipment" "hiking" "link";
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: 100%;
+        margin:0px;
     }
 }

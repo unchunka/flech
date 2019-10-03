@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\Hike;
+use Model\Difficulty;
 use Model\PDOManager;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -76,7 +77,8 @@ class App {
 
         $app->get('/hiking', function () use($app) {
             $hikes = Hike::findAll();
-            return $app['twig']->render('hiking.twig', ['hikes' => $hikes]);
+            $difficulties = Difficulty::findAll();
+            return $app['twig']->render('hiking.twig', ['hikes' => $hikes, 'difficulties' => $difficulties]);
         })->bind('hiking');
 
         $app->get('/equipment', function () use($app) {

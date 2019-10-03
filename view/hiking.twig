@@ -2,44 +2,25 @@
 
 {% block title %}randos{% endblock %}
 
+
 {% block content %}
 
     <div id="content" class="hiking">
-
-        <table>
-            <tr>
-                <td class="easy">Facile</td>
-                <td class="medium">Moyenne</td>
-                <td class="sport">Sportive</td>
-            </tr>
-            <tr>
-                <td>0 - 300 m +/-</td>
-                <td>300 - 600 m +/-</td>
-                <td>600 - 1500 m +/-</td>
-            </tr>
-        </table>
-        <div class="center">
-            <table>
-                <tr>
-                    <th>Nom</th>
-                    <th>Zone</th>
-                    <th>Dénivellé</th>
-                    <th>Description</th>
-                    <th>Lien<th>
-                </tr>
+                
+            {% for difficulty in difficulties %}
+        
+                <h3>{{ difficulty.get('name')|capitalize }}</h3>
                 {% for hike in hikes %}
-                    <tr class="{{ hike.get('difficulty') }}">
-                        <td class="name">{{ hike.get('name') }}</td>
-                        <td class="region">{{ hike.get('region') }}</td>
-                        <td class="different">{{ hike.get('different') }} +/-</td>
-                        <td class="description">{{ hike.get('description') }}</td>
-                        <td class="link"><a href="{{ hike.get('link') }}">IGN</a></td>
-                    </tr>
+                    {% if hike.get('difficulty') == difficulty.get('id') %}
+                        <div class="hike {{difficulty.get('name')}}">
+                            <span class="name">{{ hike.get('name') }}</span><br/>
+                            <span class="difference">Dénivellé : {{ hike.get('difference') }} +/-</span><br/>
+                            <span class="zone">Zone : {{ hike.get('zone') }}</span>
+                        </div>
+                    {% endif %}
                 {% endfor %}
-            </table>
-
-
-        </div>
+                <div class="etc">...</div>    
+            {% endfor %}
 
     </div>
 
