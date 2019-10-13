@@ -14,15 +14,15 @@
     <body>
         <div id="main">
             <header>
-                <h1><a href="{{ url('home') }}"><img src="img/logo.png" alt="randomega"/></a></h1>
+                <h1><a href="{{ url('accueil') }}"><img src="img/logo.png" alt="randomega"/></a></h1>
             </header>
             <nav>
-                <div class="pictures"><h2><a href="{{ url('pictures') }}">PHOTOS</a><h2></div>
-                <div class="hiking"><h2><a href="{{ url('hiking') }}">RANDOS</a><h2></div>
-                <div class="equipment"><h2><a href="{{ url('equipment') }}">EQUIPEMENT</a><h2></div>
-                <div class="links"><h2><a href="{{ url('links') }}">LIENS</a><h2></div>
-                <div class="quotes"><h2><a href="{{ url('quotes') }}">CITATIONS</a><h2></div>
-                <div class="me"><h2><a href="{{ url('me') }}">MOI</a><h2></div>
+                <div class="pictures"><h2><a href="{{ url('photos') }}">PHOTOS</a><h2></div>
+                <div class="hiking"><h2><a href="{{ url('randos') }}">RANDOS</a><h2></div>
+                <div class="equipment"><h2><a href="{{ url('equipement') }}">EQUIPEMENT</a><h2></div>
+                <div class="links"><h2><a href="{{ url('liens') }}">LIENS</a><h2></div>
+                <div class="quotes"><h2><a href="{{ url('citations') }}">CITATIONS</a><h2></div>
+                <div class="me"><h2><a href="{{ url('moi') }}">MOI</a><h2></div>
             </nav>
             {% block content %}{% endblock %}
             <footer><p>Par <a href="http://thierry-sambussy.fr">Thierry Sambussy</a></p></footer>

@@ -55,36 +55,36 @@ class App {
             return $app['twig']->render('home.twig');
         });
 
-        $app->get('/home', function () use ($app) {
+        $app->get('/accueil', function () use ($app) {
             return $app['twig']->render('home.twig');
-        })->bind('home');
+        })->bind('accueil');
 
-        $app->get('/me', function () use ($app) {
+        $app->get('/moi', function () use ($app) {
             return $app['twig']->render('me.twig');
-        })->bind('me');
+        })->bind('moi');
 
-        $app->get('/quotes', function () use ($app) {
+        $app->get('/citations', function () use ($app) {
             return $app['twig']->render('quotes.twig');
-        })->bind('quotes');
+        })->bind('citations');
 
         $app->get('/liens', function () use ($app) {
             return $app['twig']->render('links.twig');
-        })->bind('links');
+        })->bind('liens');
 
-        $app->get('/pictures', function () use ($app) {
+        $app->get('/photos', function () use ($app) {
             return $app['twig']->render('pictures.twig');
-        })->bind('pictures');
+        })->bind('photos');
 
-        $app->get('/hiking', function () use($app) {
+        $app->get('/randos', function () use($app) {
             $hikes = Hike::findAll();
             $difficulties = Difficulty::findAll();
             return $app['twig']->render('hiking.twig', ['hikes' => $hikes, 'difficulties' => $difficulties]);
-        })->bind('hiking');
+        })->bind('randos');
 
-        $app->get('/equipment', function () use($app) {
+        $app->get('/equipement', function () use($app) {
             $hikes = Hike::findAll();
             return $app['twig']->render('equipment.twig', ['hikes' => $hikes]);
-        })->bind('equipment');
+        })->bind('equipement');
 
     }
 
