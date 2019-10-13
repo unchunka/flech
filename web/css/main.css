@@ -1,13 +1,7 @@
-@font-face {
-    font-family: JosefinSansStdLight;
-    src: url("bb.ttf") format("opentype");
-}
-
 body {
     font-family: Kalam, Monaco,"Courier New","courier";
     margin:0px;
     font-size:16px;
-    color:#0C3C60;
 }
 
 #main {
@@ -26,93 +20,75 @@ ul {
 }
 
 header {
-    font-size:25px;
+    font-size:20px;
     color:white;
-    font-family: 'JosefinSansStdLight',Arial;
+    font-family: 'Oswald';
     position:relative;
-    padding:5px;
-    background: #0C3C60 url('../img/logo-white.png') no-repeat left;
-    background-size: 180px;
-    padding:20px;
-    padding-left:170px;
+    background: #0C3C60;
     grid-area: header;
+    text-align:center;
+    background:white;
+    position:relative;
 }
 
 header h1 {
+    margin-top: 0px;
     margin-bottom: 0px;
+    color:#719E40;
+    font-size:40px;
 }
 
-header h1 span {
-    color:#6EA4CA;
-}
-
-header #autor {
-    font-family:'Cute Font';
-    font-size:18px;
-    padding:5px;
-    background:#ecf0f1;
-    color:#0C3C60;
-    font-weight:bold;
-    border-radius:40%;
-}
-
-header #hamburger {
-    width:35px;
-    padding:5px;
-    position:absolute;
-    top:10px;
-    right:10px;
-    height:50px;
-    cursor:pointer;
-    display:none;
-}
-
-header #hamburger div {
-    width:100%;
-    border-top:3px solid white;
-    margin-top:7px;
+header img {
+    width:240px;
 }
 
 nav {
     display:block;
-    color: #444;
+    color: white;
     grid-area: nav;
+    padding-top:5px;
 }
 
-nav table {
-    width:100%;
-    border-collapse: collapse;
+nav, footer {
+    background:#282A36;
 }
 
-nav td {
-    padding:5px;
-    width:14.28%;
+nav div {
+    display:inline-block;
+    width:16%;
     text-align:center;
-    background: #0C3C60;
 }
 
-nav td a {
-    text-decoration: none;
-    color:white;
+nav h2 {
     font-size:20px;
-    font-family: JosefinSansStdLight;
+    margin:0px;
+}
+nav div a {
+    color: white;
+    text-decoration:none;
 }
 
-nav td a:hover {
-    color:yellow;
-}
+nav div a:hover {
+    color:#00800D;
+} 
 
 #content {
-    background:#ecf0f1;
+    background:#f8f9f8;
     padding:10px;
     position:relative;
     grid-area: content;
+    color:#282A36;
 }
+
+a {
+    color:#00800D;
+}
+
 
 #content blockquote {
     padding:5px;
     margin:30px;
-    border-left:2px solid #6EA4CA;
+    border-left:2px solid #719E40;
 }
 
 #content.home, #content.news {
@@ -238,41 +214,23 @@ nav td a:hover {
 }
 
 footer {
-    background: #0C3C60;
     grid-area: footer;
 }
 
 footer p {
     text-align:center;
     color:white;
-}
-
-
-footer a {
-    color:white;
+    margin:5px;
 }
 
 @media only screen and (max-width: 768px) {
-    nav {
-        display:none;
-    }
-    nav td {
-        width: 100%;
-        display:block;
-    }
+
     #content {
         min-height: 50vh;
     }
     #content .section {
         float: none;
         width:100%;
-    }
-    header h1 span {
-        display:block;
-    }
-    header {
-        background-size: 120px;
-        padding-left:100px;
     }
     #content.hiking table td.name,
     #content.hiking table td.region,
@@ -298,4 +256,11 @@ footer a {
         grid-template-columns: 100%;
         margin:0px;
     }
+
+    nav div {
+        display:block;
+        text-align:center;
+        width:100%;
+    }
+
 }
